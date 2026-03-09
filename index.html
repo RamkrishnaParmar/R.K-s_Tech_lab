@@ -6,13 +6,12 @@
 <title>Ramkrishna Parmar Tech Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
-/* --- General --- */
 body{
   font-family:'Inter', sans-serif;
   margin:0;
   padding:0;
-  background:#f5f7fa;
-  color:#333;
+  background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  color:#fff;
 }
 .container{
   width:90%;
@@ -20,33 +19,35 @@ body{
   margin:auto;
   margin-top:40px;
   padding:30px;
-  background:white;
+  background:rgba(0,0,0,0.85);
   border-radius:12px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  box-shadow:0 0 20px #00fff0, 0 0 40px #ff00ff;
 }
-/* --- Nav Bar --- */
+/* Nav */
 nav{
   position:sticky;
   top:0;
-  background:#1e90ff;
+  background:#111;
   padding:10px 20px;
-  color:white;
+  color:#0ff;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  border-bottom:3px solid #0b5ea8;
+  border-bottom:2px solid #0ff;
 }
 nav a{
-  color:white;
+  color:#0ff;
   margin-left:15px;
   text-decoration:none;
   font-weight:600;
+  transition:0.3s;
 }
 nav a:hover{
-  text-decoration:underline;
+  color:#ff0;
+  text-shadow:0 0 8px #ff0;
 }
-/* --- About Section --- */
+/* About */
 .about{
   display:flex;
   justify-content:space-between;
@@ -57,9 +58,10 @@ nav a:hover{
 .about img{
   width:160px;
   border-radius:50%;
-  border:3px solid #1e90ff;
+  border:3px solid #0ff;
+  box-shadow:0 0 15px #0ff;
 }
-/* --- Projects --- */
+/* Projects */
 .projects{
   margin-top:40px;
 }
@@ -68,60 +70,69 @@ nav a:hover{
 }
 .project-group h3{
   margin-bottom:15px;
-  border-bottom:2px solid #1e90ff;
+  border-bottom:2px solid #0ff;
   padding-bottom:5px;
+  color:#0ff;
+  text-shadow:0 0 8px #0ff;
 }
 .project-card{
   display:inline-block;
   width:200px;
-  background:white;
+  background:rgba(255,255,255,0.05);
   margin:10px;
   padding:15px;
   border-radius:10px;
   text-align:center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  border:1px solid #ddd;
+  transition: transform 0.2s, box-shadow 0.3s;
+  border:1px solid #0ff;
+  box-shadow:0 0 10px #0ff;
 }
 .project-card:hover{
   transform: translateY(-5px);
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  box-shadow:0 0 25px #ff0,0 0 40px #0ff;
 }
 .project-card button{
   margin-top:10px;
   padding:8px 12px;
   border:none;
   border-radius:5px;
-  background:#1e90ff;
-  color:white;
+  background:#0ff;
+  color:#111;
+  font-weight:600;
   cursor:pointer;
+  transition:0.3s;
 }
 .project-card button:hover{
-  background:#0b5ea8;
+  background:#ff0;
+  color:#111;
+  text-shadow:0 0 10px #ff0;
 }
-.project-card pre{
-  text-align:left;
-  background:#f0f0f0;
-  padding:5px;
-  font-size:12px;
-  overflow-x:auto;
-  border-radius:5px;
-  margin-top:8px;
+/* Output */
+.result{
+  margin-top:5px;
+  font-weight:600;
+  color:#0ff;
+  text-shadow:0 0 6px #0ff;
 }
+/* Footer */
 footer{
   text-align:center;
   margin-top:40px;
   padding:15px;
-  color:white;
+  color:#fff;
   font-size:14px;
-  background:#333;
+  background:#111;
+  box-shadow:0 0 15px #0ff;
 }
-input, select{
-  width: 80%;
+input{
+  width:80%;
   padding:5px;
   margin-top:5px;
   margin-bottom:10px;
   border-radius:5px;
-  border:1px solid #ccc;
+  border:1px solid #0ff;
+  background:rgba(0,0,0,0.2);
+  color:#0ff;
 }
 @media(max-width:600px){
   .about{
@@ -162,76 +173,66 @@ input, select{
 
 <section class="projects">
 
-<!-- Games / Fun Projects -->
+<!-- Games -->
 <div class="project-group" id="games">
 <h3>Games / Fun Projects</h3>
 
 <div class="project-card">
 <p>Coin Toss</p>
 <button onclick="coinToss()">Try Now</button>
-<p id="coinResult"></p>
-<pre>// Random 50/50 logic
-const result = Math.random()<0.5?'Heads':'Tails';</pre>
+<p class="result" id="coinResult"></p>
 </div>
 
 <div class="project-card">
 <p>Dice Roll</p>
 <button onclick="diceRoll()">Roll Dice</button>
-<p id="diceResult"></p>
-<pre>// Random 1-6
-const dice = Math.floor(Math.random()*6)+1;</pre>
+<p class="result" id="diceResult"></p>
 </div>
 
 <div class="project-card">
 <p>Number Guessing Game</p>
 <input type="number" id="guessInput" placeholder="1-100">
 <button onclick="guessNumber()">Guess</button>
-<p id="guessResult"></p>
-<pre>// Random number 1-100
-let secret = Math.floor(Math.random()*100)+1;</pre>
+<p class="result" id="guessResult"></p>
 </div>
 
 </div>
 
-<!-- Utility Projects -->
+<!-- Utility -->
 <div class="project-group" id="utility">
 <h3>Utility / Logic Projects</h3>
 
 <div class="project-card">
 <p>Calculator</p>
-<input type="text" id="calcInput" placeholder="e.g. 2+3*5">
+<input type="text" id="calcInput" placeholder="2+3*5">
 <button onclick="calculate()">Calculate</button>
-<p id="calcResult"></p>
-<pre>// + - * / ** using eval()</pre>
+<p class="result" id="calcResult"></p>
 </div>
 
 <div class="project-card">
 <p>Age Finder</p>
 <input type="date" id="dobInput">
 <button onclick="findAge()">Find Age</button>
-<p id="ageResult"></p>
-<pre>// DOB → Age calculation</pre>
+<p class="result" id="ageResult"></p>
 </div>
 
 <div class="project-card">
 <p>Countdown Timer</p>
 <input type="number" id="timerInput" placeholder="Seconds">
 <button onclick="startTimer()">Start</button>
-<p id="timerResult"></p>
-<pre>// Countdown in seconds</pre>
+<p class="result" id="timerResult"></p>
 </div>
 
 </div>
 
-<!-- Bonus / Practical Tools -->
+<!-- Bonus -->
 <div class="project-group" id="bonus">
 <h3>Bonus / Practical Tools</h3>
 
 <div class="project-card">
 <p>Random Password Generator</p>
 <button onclick="genPassword()">Generate</button>
-<p id="passResult"></p>
-<pre>// Letters + numbers + symbols</pre>
+<p class="result" id="passResult"></p>
 </div>
 
 <div class="project-card">
@@ -239,7 +240,6 @@ let secret = Math.floor(Math.random()*100)+1;</pre>
 <input type="text" id="todoInput" placeholder="Task">
 <button onclick="addTodo()">Add Task</button>
 <ul id="todoList"></ul>
-<pre>// Add / Remove tasks dynamically</pre>
 </div>
 
 </div>
@@ -254,18 +254,16 @@ let secret = Math.floor(Math.random()*100)+1;</pre>
 </div>
 
 <script>
-// --- Games ---
+// Games
 function coinToss(){
-  const res = Math.random()<0.5?'Heads':'Tails';
-  document.getElementById("coinResult").innerText=res;
+  document.getElementById("coinResult").innerText = Math.random()<0.5 ? "Heads" : "Tails";
 }
 function diceRoll(){
-  const res = Math.floor(Math.random()*6)+1;
-  document.getElementById("diceResult").innerText="You rolled: "+res;
+  document.getElementById("diceResult").innerText = "You rolled: " + (Math.floor(Math.random()*6)+1);
 }
 let secretNum = Math.floor(Math.random()*100)+1;
 function guessNumber(){
-  const val=parseInt(document.getElementById("guessInput").value);
+  const val = parseInt(document.getElementById("guessInput").value);
   if(val===secretNum){
     document.getElementById("guessResult").innerText="🎉 Correct! New number generated.";
     secretNum=Math.floor(Math.random()*100)+1;
@@ -275,12 +273,11 @@ function guessNumber(){
     document.getElementById("guessResult").innerText="Too high!";
   }
 }
-
-// --- Utility ---
+// Utility
 function calculate(){
   try{
-    const input=document.getElementById("calcInput").value;
-    const res=eval(input);
+    const input = document.getElementById("calcInput").value;
+    const res = Function('"use strict";return ('+input+')')();
     document.getElementById("calcResult").innerText="Result: "+res;
   }catch(e){
     document.getElementById("calcResult").innerText="Invalid input!";
@@ -307,8 +304,7 @@ function startTimer(){
     }
   },1000);
 }
-
-// --- Bonus ---
+// Bonus
 function genPassword(){
   const chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
   let pass="";
